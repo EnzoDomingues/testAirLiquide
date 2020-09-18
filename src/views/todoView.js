@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, StyleSheet, FlatList, ActivityIndicator} from 'react-native';
 import {connect} from 'react-redux';
-import {loadTask} from '../store/actions';
+import {loadTask} from '../store/actions/actions';
 import {CheckBox, Button} from 'react-native-elements';
 class TodoView extends Component {
   constructor(props) {
@@ -43,7 +43,9 @@ class TodoView extends Component {
     console.log(dataSource);
     return (
       <View style={styles.container}>
-        {this.props.todo.isFetching ? <Text>Loading...</Text> : null}
+        {this.props.todo.isFetching && (
+          <ActivityIndicator size="small" color="#004ee7" />
+        )}
         <FlatList
           data={dataSource && dataSource.length > 0 && dataSource}
           renderItem={({item, index}) => (
@@ -61,7 +63,6 @@ class TodoView extends Component {
         <Button
           raised
           backgroundColor={'#004ee7'}
-          buttonStyle={{marginTop: 6}}
           title="FINISH TASKS"
           onPress={() => this.onFinishTaks()}
         />
