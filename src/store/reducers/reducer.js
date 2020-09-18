@@ -10,7 +10,7 @@ const reducer = (state = initialState, action) => {
     case 'LOAD_SUCCESSED':
       return {
         ...state,
-        listTodo: action.listTodo.reverse(),
+        listTodo: action.listTodo,
         isFetching: false,
       };
     case 'LOAD_FAIL':
