@@ -40,7 +40,6 @@ class TodoView extends Component {
 
   render() {
     const {dataSource} = this.state;
-    console.log(dataSource);
     return (
       <View style={styles.container}>
         {this.props.todo.isFetching && (
